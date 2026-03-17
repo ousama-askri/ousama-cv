@@ -46,40 +46,6 @@ src/
 - **Tailwind CSS** - Utility-first CSS framework
 - **Angular Signals** - Reactive state management
 
-## 🏃‍♂️ Getting Started
-
-### Prerequisites
-
-- Node.js (v18 or higher)
-- npm (v9 or higher)
-
-### Installation
-
-1. Clone or extract the project:
-   ```bash
-   cd ousama-cv-website
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-4. Open your browser and navigate to `http://localhost:4200`
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-The build artifacts will be stored in the `dist/` directory.
-
 ## 🏗️ Architecture
 
 ### Models
@@ -94,20 +60,6 @@ Each component is standalone and responsible for a specific section:
 - Implements single responsibility principle
 - Follows Angular best practices
 
-## 📝 Customization
-
-To customize the CV content, edit the `CvDataService` in `src/app/services/cv-data.service.ts`:
-
-- `personalInfoSignal` - Personal details
-- `experiencesSignal` - Work experience
-- `educationSignal` - Education history
-- `skillsSignal` - Technical skills
-- `hobbiesSignal` - Hobbies and interests
-
 ## 📄 License
 
 This project is for personal use. Feel free to use it as a template for your own CV website.
-
----
-
-Built with ❤️ using Angular and Tailwind CSS
