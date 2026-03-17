@@ -1,0 +1,54 @@
+<section id="contact" class="py-20 bg-white">
+  <div class="section-container">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-primary-500 font-medium tracking-wider uppercase">Kontakt</span>
+      <h2 class="section-title mt-2">Lassen Sie uns in Kontakt treten</h2>
+      <p class="section-subtitle max-w-2xl mx-auto">
+        Ich freue mich auf Ihre Nachricht und bin offen für neue Möglichkeiten
+      </p>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+      <!-- Contact Card -->
+      <div class="flex justify-center mb-12">
+        <a
+          [href]="'mailto:' + personalInfo().email"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card card-hover text-center group max-w-sm">
+
+          <div
+            class="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110 bg-red-500">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">E-Mail</h3>
+          <p class="text-gray-600 group-hover:text-primary-600 transition-colors">{{ personalInfo().email }}</p>
+        </a>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="card bg-gradient-to-br from-primary-500 to-primary-600 text-white text-center p-10">
+        <h3 class="text-2xl font-bold mb-4">Bereit für neue Herausforderungen</h3>
+        <p class="text-primary-100 mb-8 max-w-lg mx-auto">
+          Als erfahrener Full Stack Java Entwickler bin ich immer interessiert an spannenden
+          Projekten und neuen beruflichen Möglichkeiten.
+        </p>
+
+        <a
+          [href]="'mailto:' + personalInfo().email + '?subject=Kontaktaufnahme%20-%20' + fullName()"
+          class="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-xl hover:bg-gray-50 transition-colors shadow-lg shadow-primary-700/30">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          E-Mail senden
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

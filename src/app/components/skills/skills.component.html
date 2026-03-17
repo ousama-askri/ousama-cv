@@ -1,0 +1,64 @@
+<section id="skills" class="py-20 bg-gray-50">
+  <div class="section-container">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-primary-500 font-medium tracking-wider uppercase">Fähigkeiten</span>
+      <h2 class="section-title mt-2">Technische Kenntnisse</h2>
+      <p class="section-subtitle max-w-2xl mx-auto">
+        Meine technischen Fähigkeiten und Sprachkenntnisse
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid md:grid-cols-2 gap-8">
+      @for (group of skillGroups(); track group.category) {
+        <div class="card">
+          <!-- Category Header -->
+          <div class="flex items-center gap-4 mb-6 pb-4 border-b border-gray-100">
+            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
+              <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="getCategoryIcon(group.category)"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{{ group.categoryLabel }}</h3>
+          </div>
+
+          <!-- Skills List -->
+          <div class="space-y-5">
+            @for (skill of group.skills; track skill.id) {
+              <div class="group">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="font-medium text-gray-800">{{ skill.name }}</span>
+                  <span class="text-sm text-gray-500 group-hover:text-primary-600 transition-colors">
+                    {{ getLevelLabel(skill) }}
+                  </span>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div
+                    class="h-full bg-gradient-to-r from-primary-500 to-primary-400 rounded-full transition-all duration-500 ease-out group-hover:from-primary-600 group-hover:to-primary-500"
+                    [style.width.%]="getPercentage(skill)">
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Additional Skills/Technologies -->
+    <div class="mt-12">
+      <h3 class="text-xl font-bold text-gray-900 text-center mb-8">Weitere Technologien & Konzepte</h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        @for (tech of additionalTechnologies; track tech) {
+          <span class="px-4 py-2 bg-white rounded-lg shadow-sm border border-gray-100 text-gray-700 font-medium hover:border-primary-300 hover:shadow-md transition-all duration-200 select-none cursor-default">
+            {{ tech }}
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+</section>

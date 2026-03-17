@@ -1,0 +1,54 @@
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  [class.bg-white]="isScrolled()"
+  [class.shadow-md]="isScrolled()"
+  [class.bg-transparent]="!isScrolled()">
+
+  <nav class="section-container">
+    <div class="flex items-center justify-between h-16 md:h-20">
+
+      <!-- Logo / Name -->
+      <a href="#" class="text-xl md:text-2xl font-heading font-bold transition-colors duration-200"
+         [class.text-white]="!isScrolled()"
+         [class.text-gray-900]="isScrolled()">
+        {{ fullName() }}
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="hidden md:flex items-center space-x-8">
+        <li *ngFor="let item of navItems; trackBy: trackByHref">
+          <a [href]="item.href"
+             (click)="scrollToSection(item.href); $event.preventDefault()"
+             class="font-medium transition-colors duration-200 hover:text-primary-500"
+             [class.text-white]="!isScrolled()"
+             [class.text-gray-700]="isScrolled()">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button type="button" (click)="toggleMenu()" [attr.aria-expanded]="isMenuOpen()" aria-label="Toggle navigation menu" class="md:hidden p-2 rounded-lg transition-colors" [class.text-white]="!isScrolled()" [class.text-gray-700]="isScrolled()">
+        <svg *ngIf="!isMenuOpen()" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg *ngIf="isMenuOpen()" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div *ngIf="isMenuOpen()" class="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg animate-fade-in">
+      <ul class="py-4">
+        <li *ngFor="let item of navItems; trackBy: trackByHref">
+          <a [href]="item.href"
+             (click)="scrollToSection(item.href); $event.preventDefault()"
+             class="block px-6 py-3 text-gray-700 font-medium hover:bg-primary-50 hover:text-primary-600 transition-colors">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

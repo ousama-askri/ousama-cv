@@ -1,0 +1,103 @@
+<section id="experience" class="py-20 bg-gray-50">
+  <div class="section-container">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-primary-500 font-medium tracking-wider uppercase">Karriere</span>
+      <h2 class="section-title mt-2">Berufliche Erfahrung</h2>
+      <p class="section-subtitle max-w-2xl mx-auto">
+        Mein beruflicher Werdegang von der Maschinenmontage zur Softwareentwicklung
+      </p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="flex justify-center mb-12">
+      <div class="inline-flex bg-white rounded-xl p-1 shadow-md">
+        <button 
+          type="button"
+          (click)="setActiveTab('software')"
+          class="px-6 py-3 rounded-lg font-medium transition-all duration-200"
+          [class.bg-primary-500]="isActiveTab('software')"
+          [class.text-white]="isActiveTab('software')"
+          [class.text-gray-600]="!isActiveTab('software')"
+          [class.hover:text-gray-900]="!isActiveTab('software')">
+          <svg class="w-5 h-5 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+          </svg>
+          Software
+        </button>
+        <button 
+          type="button"
+          (click)="setActiveTab('mechanical')"
+          class="px-6 py-3 rounded-lg font-medium transition-all duration-200"
+          [class.bg-primary-500]="isActiveTab('mechanical')"
+          [class.text-white]="isActiveTab('mechanical')"
+          [class.text-gray-600]="!isActiveTab('mechanical')"
+          [class.hover:text-gray-900]="!isActiveTab('mechanical')">
+          <svg class="w-5 h-5 inline-block mr-2 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          Maschinenbau
+        </button>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-primary-500 via-primary-300 to-primary-100"></div>
+
+      <!-- Experience Cards -->
+      <div class="space-y-12">
+        @for (exp of currentExperiences; track exp.id; let i = $index; let isEven = $even) {
+          <div class="relative">
+            <!-- Timeline Dot -->
+            <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-8">
+              <div class="w-4 h-4 rounded-full bg-primary-500 border-4 border-white shadow-md"></div>
+            </div>
+
+            <!-- Card -->
+            <div 
+              class="md:w-[calc(50%-2rem)] card card-hover"
+              [class.md:ml-auto]="isEven"
+              [class.md:mr-auto]="!isEven">
+              
+              <!-- Date Badge -->
+              <div class="flex items-center gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-100 text-primary-800">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                  </svg>
+                  {{ exp.startDate }} – {{ exp.endDate }}
+                </span>
+              </div>
+
+              <!-- Company & Position -->
+              <h3 class="text-xl font-bold text-gray-900 mb-1">{{ exp.position }}</h3>
+              <p class="text-primary-600 font-medium mb-4">
+                {{ exp.company }}
+                <span class="text-gray-400 font-normal">• {{ exp.location }}</span>
+              </p>
+
+              <!-- Responsibilities -->
+              <ul class="space-y-2">
+                @for (task of exp.responsibilities; track task) {
+                  <li class="flex items-start gap-3 text-gray-600">
+                    <svg class="w-5 h-5 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    <span>{{ task }}</span>
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

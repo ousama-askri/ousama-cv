@@ -1,0 +1,140 @@
+<section class="relative min-h-screen flex items-center bg-gradient-to-br from-gray-900 via-gray-800 to-primary-900 overflow-hidden">
+
+  <!-- Falling Symbols Background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    @for (symbol of fallingSymbols; track symbol.id) {
+      <div
+        class="absolute text-primary-500/20 font-mono text-2xl symbol-fall"
+        [style.left.%]="symbol.left"
+        [style.top]="'-10%'"
+        [style.animation-duration.s]="symbol.duration"
+        [style.animation-delay.s]="symbol.delay">
+        {{ symbol.char }}
+      </div>
+    }
+  </div>
+
+  <!-- Decorative Shapes -->
+  <div class="absolute top-20 right-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl"></div>
+
+  <div class="section-container relative z-10 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Text Content -->
+      <div class="text-center lg:text-left animate-slide-up">
+        <p class="text-primary-400 font-medium mb-4 tracking-wider uppercase">
+          Willkommen
+        </p>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          Ich bin
+          <span
+            class="text-gradient bg-gradient-to-r from-primary-400 to-primary-300 inline-block min-w-fit"
+            [style.min-width.ch]="fullName().length">
+            {{ displayedName() }}
+          </span>
+        </h1>
+
+        <h2 class="text-xl md:text-2xl text-gray-300 mb-6">
+          {{ personalInfo().title }}
+        </h2>
+
+        <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          {{ personalInfo().summary }}
+        </p>
+
+        <!-- Stats -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-8 mb-10">
+          <div class="text-center">
+            <span class="block text-3xl md:text-4xl font-bold text-white">{{ yearsOfExperience() }}+</span>
+            <span class="text-gray-400 text-sm">Jahre Erfahrung</span>
+          </div>
+          <div class="text-center">
+            <span class="block text-3xl md:text-4xl font-bold text-white">3+</span>
+            <span class="text-gray-400 text-sm">Technologien</span>
+          </div>
+          <div class="text-center">
+            <span class="block text-3xl md:text-4xl font-bold text-white">8+</span>
+            <span class="text-gray-400 text-sm">Projekte</span>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <button
+            type="button"
+            (click)="scrollToContact()"
+            class="btn-primary">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Kontakt aufnehmen
+          </button>
+
+          <button
+            type="button"
+            (click)="scrollToExperience()"
+            class="btn-secondary border-white/30 text-white hover:bg-white/10">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Erfahrung ansehen
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile Image / Avatar -->
+      <div class="hidden lg:flex justify-center animate-fade-in">
+        <div class="relative">
+          <!-- Decorative Ring -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary-500 to-primary-300 rounded-full blur-md opacity-50 scale-105"></div>
+
+          <!-- Avatar Container -->
+          <div class="relative w-80 h-80 rounded-full bg-gradient-to-tr from-primary-500 to-primary-400 p-1">
+            <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center overflow-hidden">
+              <!-- Profile Image -->
+              <img
+                src="Ousama_Askri_ProfileImage.png"
+                [alt]="fullName()"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  @keyframes symbolFall {
+    0% {
+      top: -10%;
+      opacity: 0;
+    }
+    5% {
+      opacity: 0.3;
+    }
+    95% {
+      opacity: 0.3;
+    }
+    100% {
+      top: 105%;
+      opacity: 0;
+    }
+  }
+
+  .symbol-fall {
+    animation: symbolFall linear infinite;
+  }
+</style>

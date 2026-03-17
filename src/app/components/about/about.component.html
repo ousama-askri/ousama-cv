@@ -1,0 +1,78 @@
+<section id="about" class="py-20 bg-white">
+  <div class="section-container">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-primary-500 font-medium tracking-wider uppercase">Über mich</span>
+      <h2 class="section-title mt-2">Mein Profil</h2>
+      <p class="section-subtitle max-w-2xl mx-auto">
+        Ein leidenschaftlicher Entwickler mit einem einzigartigen Hintergrund in der Präzisionsmechanik
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left Column - Text Content -->
+      <div class="space-y-6">
+        <div class="prose prose-lg">
+          <p class="text-gray-600 leading-relaxed">
+            Nach einer erfolgreichen Karriere als <strong class="text-gray-900">Polymechaniker</strong> und
+            <strong class="text-gray-900">Maschinenmonteur</strong> habe ich meine Leidenschaft für die
+            Softwareentwicklung entdeckt und den Karrierewechsel vollzogen.
+          </p>
+
+          <p class="text-gray-600 leading-relaxed">
+            Bei <strong class="text-gray-900">Abacus Research AG</strong> konnte ich meine Fähigkeiten als
+            <strong class="text-gray-900">Full Stack Java Entwickler</strong> unter Beweis stellen und an
+            komplexen Enterprise-Lösungen arbeiten.
+          </p>
+
+          <p class="text-gray-600 leading-relaxed">
+            Mein technischer Hintergrund aus der Präzisionsmechanik hat mir eine besondere Perspektive
+            auf Qualität, Präzision und systematisches Arbeiten vermittelt – Eigenschaften, die ich
+            täglich in meiner Arbeit als Entwickler einsetze.
+          </p>
+        </div>
+
+        <!-- Hobbies -->
+        <div class="pt-6">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Interessen</h3>
+          <div class="flex flex-wrap gap-3">
+            @for (hobby of hobbies(); track hobby) {
+              <span class="skill-badge">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                {{ hobby }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Info Cards -->
+      <div class="grid gap-4">
+        @for (card of infoCards; track card.label) {
+          <div class="card card-hover group">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center group-hover:bg-primary-500 transition-colors duration-300">
+                <svg
+                  class="w-6 h-6 text-primary-600 group-hover:text-white transition-colors duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="card.icon"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500 mb-1">{{ card.label }}</p>
+                <p class="font-medium text-gray-900">{{ card.value }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
